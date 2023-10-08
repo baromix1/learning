@@ -1,0 +1,8 @@
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\bin\Debug\basics.exe.config
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\bin\Debug\basics.exe
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\bin\Debug\basics.pdb
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\obj\Debug\basics.csproj.AssemblyReference.cache
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\obj\Debug\basics.csproj.SuggestedBindingRedirects.cache
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\obj\Debug\basics.csproj.CoreCompileInputs.cache
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\obj\Debug\basics.exe
+C:\Users\login\Documents\GitHub\learning\c#\basics\basics\obj\Debug\basics.pdb
