@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using firstApp.Data;
 using firstApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace firstApp.Controllers
 {
@@ -25,6 +26,20 @@ namespace firstApp.Controllers
               return _context.Post != null ? 
                           View(await _context.Post.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Post'  is null.");
+        }
+        // GET: Posts/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return _context.Post != null ?
+                        View() :
+                        Problem("Entity set 'ApplicationDbContext.Post'  is null.");
+        }
+        // Post: Posts/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        {
+            return _context.Post != null ?
+                        View("Index",await _context.Post.Where(j=>j.text.Contains(SearchPhrase)).ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Post'  is null.");
         }
 
         // GET: Posts/Details/5
@@ -46,6 +61,7 @@ namespace firstApp.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +72,7 @@ namespace firstApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("id,title,text")] Post post)
         {
             if (ModelState.IsValid)
@@ -68,6 +85,7 @@ namespace firstApp.Controllers
         }
 
         // GET: Posts/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Post == null)
@@ -88,6 +106,7 @@ namespace firstApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("id,title,text")] Post post)
         {
             if (id != post.id)
@@ -119,6 +138,7 @@ namespace firstApp.Controllers
         }
 
         // GET: Posts/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Post == null)
@@ -139,6 +159,7 @@ namespace firstApp.Controllers
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Post == null)
