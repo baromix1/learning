@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Core.Specification
 {
-    public class BaseScpecification<T> : ISpecification<T>
+    public class BaseSpecification<T> : ISpecification<T>
     {
-        public BaseScpecification(Expression<Func<T,bool>> criteria)
+        public BaseSpecification(){
+
+        }
+        public BaseSpecification(Expression<Func<T,bool>> criteria)
         {
             Criteria=criteria;
         }
