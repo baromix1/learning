@@ -1,0 +1,1 @@
+C:\Users\login\Documents\GitHub\learning\c#\app\app.csproj;x86
